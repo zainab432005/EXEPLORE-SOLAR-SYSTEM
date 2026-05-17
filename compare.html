@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Earth vs Mars - Cosmic Redesign</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body id="compare-page">
+
+    <nav class="navbar">
+        <a href="index.html" class="active">Home</a>
+        <a href="compare.html">Planets</a>
+        <a href="solar system.html">Solar System</a>
+    </nav>
+
+    <div class="split-container">
+        <div class="planet-section">
+            <h2>PLANET EARTH</h2>
+            <div class="image-frame">
+                <img src="earth.jpeg" alt="Earth">
+            </div>
+            <div class="video-wrapper">
+                <video controls>
+                    <source src="Earth.mp4" type="video/mp4">
+                </video>
+            </div>
+            <p>The only planet known to harbor life and liquid water.</p>
+            <button class="btn-details" onclick="openInfo('PLANET EARTH', '149.6 million km', 'Earth is the third planet from the Sun and the only astronomical object known to harbor life.')">show details</button>
+        </div>
+
+        <div class="planet-section">
+            <h2>PLANET MARS</h2>
+            <div class="image-frame">
+                <img src="mars.jpeg" alt="Mars">
+            </div>
+            <div class="video-wrapper">
+                <video controls>
+                    <source src="mars.mp4" type="video/mp4">
+                </video>
+            </div>
+            <p>The Red Planet, home to the tallest mountain in the solar system.</p>
+            <button class="btn-details" onclick="openInfo('PLANET MARS', '227.9 million km', 'Mars is the fourth planet from the Sun and the second-smallest planet in the Solar System, being larger than only Mercury.')">show details</button>
+        </div>
+    </div>
+    
+    <div id="modal-bg" onclick="closeInfo()"></div>
+    <div id="info-modal">
+        <h3 id="info-title"></h3>
+        <div id="info-dist"></div>
+        <div id="info-text"></div>
+        <button onclick="closeInfo()">close</button>
+    </div>
+    
+    <script src="main.js"></script>
+</body>
+</html>

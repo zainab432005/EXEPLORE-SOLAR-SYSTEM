@@ -3,143 +3,63 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Solar System | Space Explorer</title>
+    <title>Solar System</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <nav class="navbar" aria-label="Main navigation">
-        <a href="index.html">Home</a>
-        <a href="compare.html">Planets</a>
-        <a href="planet.html" class="active" aria-current="page">Solar System</a>
+    <nav>
+        <a href="index.html">HOME</a>
+        <a href="compare.html">EARTH & MARS</a>
+        <a href="planets.html" class="active">SOLAR SYSTEM</a>
     </nav>
 
-    <main>
-        <h1 class="main-title">THE SOLAR SYSTEM</h1>
-        <p class="solar-subtitle">Click on any planet to discover its secrets</p>
-
-        <!--Added aria-label to filter bar, and aria-pressed to buttons-->
-        <div class="filter-bar" role="group" aria-label="Filter planets by type">
-            <button class="filter-btn active-filter" aria-pressed="true"  onclick="filterPlanets('all', this)">All</button>
-            <button class="filter-btn"               aria-pressed="false" onclick="filterPlanets('inner', this)">Inner Planets</button>
-            <button class="filter-btn"               aria-pressed="false" onclick="filterPlanets('outer', this)">Outer Planets</button>
-            <button class="filter-btn"               aria-pressed="false" onclick="filterPlanets('star', this)">The Sun</button>
+    <h1 class="main-title">THE SOLAR SYSTEM</h1>
+    <div class="planets-grid">
+        <div class="planet-card" onclick="openDetails('The Sun', '0 km (The Center)')">
+            <img src="https://images.unsplash.com/photo-1532692019777-17eb48b94f6c?w=400" alt="Sun">
+            <h3>The Sun</h3>
         </div>
-
-        <div class="planets-grid" role="list">
-            <div class="planet-card" data-type="star" role="listitem" tabindex="0"
-                 aria-label="The Sun - click to learn more">
-                <img src="sun.jpeg" alt="The Sun, a bright yellow star">
-                <h3>The Sun</h3>
-                <span class="planet-tag star-tag">Star</span>
-            </div>
-
-            <div class="planet-card" data-type="inner" role="listitem" tabindex="0"
-                 aria-label="Mercury - click to learn more">
-                <img src="mercury.jpeg" alt="Mercury, a grey rocky planet">
-                <h3>Mercury</h3>
-                <span class="planet-tag inner-tag">Inner</span>
-            </div>
-
-            <div class="planet-card" data-type="inner" role="listitem" tabindex="0"
-                 aria-label="Venus - click to learn more">
-                <img src="Venus.jpeg" alt="Venus, a pale yellow planet covered in thick clouds">
-                <h3>Venus</h3>
-                <span class="planet-tag inner-tag">Inner</span>
-            </div>
-
-            <div class="planet-card" data-type="inner" role="listitem" tabindex="0"
-                 aria-label="Earth - click to learn more">
-                <img src="earth.jpeg" alt="Earth, a blue and green planet seen from space">
-                <h3>Earth</h3>
-                <span class="planet-tag inner-tag">Inner</span>
-            </div>
-
-            <div class="planet-card" data-type="inner" role="listitem" tabindex="0"
-                 aria-label="Mars - click to learn more">
-                <img src="mars.jpeg" alt="Mars, the red planet">
-                <h3>Mars</h3>
-                <span class="planet-tag inner-tag">Inner</span>
-            </div>
-
-            <div class="planet-card" data-type="outer" role="listitem" tabindex="0"
-                 aria-label="Jupiter - click to learn more">
-                <img src="Jupiter.jpeg" alt="Jupiter, a large orange and white striped planet">
-                <h3>Jupiter</h3>
-                <span class="planet-tag outer-tag">Outer</span>
-            </div>
-
-            <div class="planet-card" data-type="outer" role="listitem" tabindex="0"
-                 aria-label="Saturn - click to learn more">
-                <img src="Saturne.jpeg" alt="Saturn, a planet with distinctive golden rings">
-                <h3>Saturn</h3>
-                <span class="planet-tag outer-tag">Outer</span>
-            </div>
-
-            <div class="planet-card" data-type="outer" role="listitem" tabindex="0"
-                 aria-label="Uranus - click to learn more">
-                <img src="Uranus.jpeg" alt="Uranus, a blue-green ice giant planet">
-                <h3>Uranus</h3>
-                <span class="planet-tag outer-tag">Outer</span>
-            </div>
-
-            <div class="planet-card" data-type="outer" role="listitem" tabindex="0"
-                 aria-label="Neptune - click to learn more">
-                <img src="nepton.jpeg" alt="Neptune, a deep blue planet with strong winds">
-                <h3>Neptune</h3>
-                <span class="planet-tag outer-tag">Outer</span>
-            </div>
-
+        <div class="planet-card" onclick="openDetails('Mercury', '57.9 Million km')">
+            <img src="https://images.unsplash.com/photo-1614732414444-096e5f1122d5?w=400" alt="Mercury">
+            <h3>Mercury</h3>
         </div>
-    </main>
-
-    <!--  Added role="dialog", aria-modal, aria-labelledby for screen readers -->
-    <div id="modal-bg" aria-hidden="true"></div>
-    <div id="info-modal" role="dialog" aria-modal="true" aria-labelledby="planet-name-label" aria-hidden="true">
-        <div class="modal-emoji" id="planet-emoji" aria-hidden="true"></div>
-        <!--  alt is set dynamically in JS — starts empty, fine -->
-        <img id="modal-planet-img" src="" alt="">
-        <h2 id="planet-name-label"></h2>
-        <p class="modal-dist">Distance from Sun:<br><span id="planet-dist-label"></span></p>
-        <p id="planet-desc-label"></p>
-        <div class="modal-stats">
-            <div class="modal-stat"><span class="stat-label">Age</span><span id="planet-age"></span></div>
-            <div class="modal-stat"><span class="stat-label">Temperature</span><span id="planet-temp"></span></div>
+        <div class="planet-card" onclick="openDetails('Venus', '108.2 Million km')">
+            <img src="https://images.unsplash.com/photo-1614732484003-ef9881555dc3?w=400" alt="Venus">
+            <h3>Venus</h3>
         </div>
-
-        <button onclick="closeDetails()" aria-label="Close planet details">CLOSE</button>
+        <div class="planet-card" onclick="openDetails('Earth', '149.6 Million km')">
+            <img src="https://images.unsplash.com/photo-1614730321146-b6fa6a46bcb4?w=400" alt="Earth">
+            <h3>Earth</h3>
+        </div>
+        <div class="planet-card" onclick="openDetails('Mars', '227.9 Million km')">
+            <img src="https://images.unsplash.com/photo-1614729939124-032f0b56c9ce?w=400" alt="Mars">
+            <h3>Mars</h3>
+        </div>
+        <div class="planet-card" onclick="openDetails('Jupiter', '778.5 Million km')">
+            <img src="https://images.unsplash.com/photo-1630839437035-dac17da580d0?w=400" alt="Jupiter">
+            <h3>Jupiter</h3>
+        </div>
+        <div class="planet-card" onclick="openDetails('Saturn', '1.4 Billion km')">
+            <img src="https://images.unsplash.com/photo-1614730321146-b6fa6a46bcb4?w=400" style="filter: hue-rotate(200deg);" alt="Saturn">
+            <h3>Saturn</h3>
+        </div>
+        <div class="planet-card" onclick="openDetails('Uranus', '2.9 Billion km')">
+            <img src="https://images.unsplash.com/photo-1614732414444-096e5f1122d5?w=400" style="filter: hue-rotate(160deg);" alt="Uranus">
+            <h3>Uranus</h3>
+        </div>
+        <div class="planet-card" onclick="openDetails('Neptune', '4.5 Billion km')">
+            <img src="https://images.unsplash.com/photo-1614732414444-096e5f1122d5?w=400" style="filter: hue-rotate(220deg);" alt="Neptune">
+            <h3>Neptune</h3>
+        </div>
     </div>
-    
- <!-- Footer -->
-    <footer class="site-footer">
-        <div class="footer-inner">
-            <!-- Website branding -->
-            <div class="footer-brand">
-                <span class="footer-logo"><span aria-hidden="true">🌌</span> Space Explorer</span>
-                <p>Exploring the universe, one star at a time.</p>
-            </div>
-            <!-- Footer links -->
-            <nav class="footer-links" aria-label="Footer navigation">
-                <h4>Pages</h4>
-                <a href="index.html">Home</a>
-                <a href="compare.html">Planets</a>
-                <a href="planet.html">Solar System</a>
-            </nav>
-            <!-- About section -->
-            <div class="footer-credit">
-                <h4>About</h4>
-                <p>A student project dedicated to the wonders of our universe and the science behind it.</p>
-            </div>
-        </div>
 
-        <!-- Copyright -->
-        <div class="footer-bottom">
-            <p>© 2026 Space Explorer. Made with <span aria-hidden="true">❤️</span>.</p>
-        </div>
-    </footer>
+    <div id="modal-bg" onclick="closeDetails()"></div>
+    <div id="info-modal">
+        <h2 id="planet-name-label"></h2>
+        <p>Distance from Sun: <br><span id="planet-dist-label"></span></p>
+        <button onclick="closeDetails()">CLOSE</button>
+    </div>
 
-     </footer>
-
-    <script src="script.js"></script> 
-</body>
+    <script src="script.js"></script>
 </body>
 </html>
